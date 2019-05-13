@@ -1,24 +1,25 @@
-// React imports
+// React: imports
 import React, { Component } from "react";
 import Doglist from "./Doglist";
 
-// Superagent import
+// Superagent: imports
 import * as request from "superagent";
 
-// Redux import
+// Redux: imports
 import { connect } from "react-redux";
 
-// Import actions
-import { fetchDogBreeds } from "../actions/SetDogbreeds";
+// Action: imports
+import { setDogBreeds } from "../actions/SetDogBreeds";
+
 
 class DoglistContainer extends Component {
-  // Fetching the API
+  // Fetching API
   componentDidMount() {
     request
       .get("https://dog.ceo/api/breeds/list/all")
       .then(response => {
-        // Use imported action, turn data into array
-        this.props.dispatch(fetchDogBreeds(Object.keys(response.body.message)));
+        // Dispatch action to reducer
+        this.props.dispatch(setDogBreeds(Object.keys(response.body.message)));
       })
       .catch(console.error);
   }
@@ -28,10 +29,10 @@ class DoglistContainer extends Component {
 
     return (
       <div>
-        <h1>Dogs list:</h1>
+        <h1>Dog breed list:</h1>
 
         {dogbreeds &&
-          // If exists, then map array and pass props
+          // If exists, map array & pass props
           dogbreeds.map((dogbreed, index) => {
             return <Doglist key={index} dogbreed={dogbreed} />;
           })}

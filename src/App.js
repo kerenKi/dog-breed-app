@@ -1,12 +1,21 @@
+// React: imports
 import React, { Component } from "react";
 import "./App.css";
+
+// Component: imports
 import DoglistContainer from "./components/DoglistContainer";
+import DogimagesContainer from "./components/DogimagesContainer"
+
+// BrowserRouter: import
+import { Route } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
       <div>
-        <DoglistContainer />
+        
+        <Route exact path="/list" component={DoglistContainer} />
+        <Route exact path="/images" component={DogimagesContainer} />
       </div>
     );
   }

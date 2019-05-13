@@ -1,6 +1,6 @@
 const reducer = (state = null, action = {}) => {
   switch (action.type) {
-    // Setting dog breeds
+    // Initial listing of dog breeds
     case "SET_DOGBREEDS":
       return action.payload;
     default:
@@ -8,4 +8,5 @@ const reducer = (state = null, action = {}) => {
   }
 };
 
+// Reducer: export
 export default reducer;

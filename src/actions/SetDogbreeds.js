@@ -1,4 +1,4 @@
-export function fetchDogBreeds(dogbreeds) {
+export function setDogBreeds(dogbreeds) {
   return {
     type: "SET_DOGBREEDS",
     payload: dogbreeds
