@@ -1,5 +1,7 @@
+// React: import
 import React, { Component } from "react";
-// Import BrowserRouter
+
+// BrowserRouter: import
 import { Link } from "react-router-dom";
 
 export default class Doglist extends Component {

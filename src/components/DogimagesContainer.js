@@ -1,14 +1,15 @@
-// React imports
+// React: imports
 import React, { Component } from "react";
 
-// Superagent import
+// Superagent: import
 import * as request from "superagent";
 
 export default class DogimagesContainer extends Component {
+  
   // Local state
   state = { images: null };
 
-  // Fetching the API
+  // Fetching API
   componentDidMount() {
     request
       .get("https://dog.ceo/api/breed/hound/images")
@@ -17,15 +18,16 @@ export default class DogimagesContainer extends Component {
   }
 
   displayImages(images) {
+    // Set local state
     this.setState({
-      images: images
+      images
     });
   }
 
   render() {
     return (
       <div>
-        <h1>Dogs details:</h1>
+        <h1>Dog breed details:</h1>
 
         {this.state.images && console.log(this.state.images)}
 

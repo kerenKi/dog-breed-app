@@ -1,3 +1,4 @@
+// React: import
 import React, { Component } from "react";
 
 export default class Dogimages extends Component {
