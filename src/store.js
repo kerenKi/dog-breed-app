@@ -1,13 +1,12 @@
-
-// Imports
+// Store: imports
 import { createStore } from "redux";
 import reducer from "./reducer";
 
-// DEV tools
+// Connect dev tools
 const enhancer = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
-// Creation of store
+// Store: creation
 const store = createStore(reducer, enhancer);
 
-// Exporting store
+// Store: exporting
 export default store;
