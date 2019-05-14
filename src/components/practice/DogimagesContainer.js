@@ -12,19 +12,16 @@ import { connect } from "react-redux";
 import { setDogImages } from "../../actions/SetDogimages";
 
 class DogimagesContainer extends Component {
-  // Local state
-  state = { images: null };
-
-  // Params
+  // Action creotor call
   breed = this.props.match.params.breed;
 
-  // Fetching API
+  // Fetch API
   componentDidMount() {
     request
       .get("https://dog.ceo/api/breed/" + this.breed + "/images")
       .then(response => {
-        // Dispatch action to reducer
-        this.props.dispatch(setDogImages(response.body.message));
+        // Dispatch action
+        this.props.setDogImages(response.body.message);
       })
       .catch(console.error);
   }
@@ -32,15 +29,16 @@ class DogimagesContainer extends Component {
   render() {
     return (
       <div>
-        <h1>Dog breed details:</h1>
+        <h1>Images of {this.breed}</h1>
 
         <ul>
           {this.props.dogimages &&
+            // If exists, filter and map array, then pass props
             this.props.dogimages
               .filter((image, index) => index < 11)
               .map((image, index) => {
                 return (
-                  <Dogimages key={index} dbreed={this.breed} img={image} />
+                  <Dogimages key={index} breed={this.breed} img={image} />
                 );
               })}
         </ul>
@@ -55,5 +53,8 @@ const mapStateToProps = state => {
     dogimages: state.dogimages
   };
 };
-// Redux: connect to state
-export default connect(mapStateToProps)(DogimagesContainer);
+// Redux: connect to state, bind action creator
+export default connect(
+  mapStateToProps,
+  { setDogImages }
+)(DogimagesContainer);

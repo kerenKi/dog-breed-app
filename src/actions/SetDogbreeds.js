@@ -1,6 +1,8 @@
+// Secure against typos
+export const SET_DOGBREEDS = "SET_DOGBREEDS";
+
 export function setDogBreeds(dogbreeds) {
-  // Secure action name
-  const SET_DOGBREEDS = "SET_DOGBREEDS";
+  // Direct return of action object
   return {
     type: SET_DOGBREEDS,
     payload: dogbreeds

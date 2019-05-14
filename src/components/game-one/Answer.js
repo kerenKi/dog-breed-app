@@ -1,10 +1,12 @@
 // React: imports
 import React, { Component } from "react";
+
+// PropTypes: import
 import PropTypes from "prop-types";
 
 export default class Answer extends Component {
+  // PropTypes: check type of props
   static propTypes = {
-    // Check passed prop types
     winner: PropTypes.bool.isRequired,
     breed: PropTypes.string.isRequired
   };
