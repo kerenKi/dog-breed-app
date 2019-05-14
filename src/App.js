@@ -3,8 +3,8 @@ import React, { Component } from "react";
 import "./App.css";
 
 // Component: imports
-import DoglistContainer from "./components/DoglistContainer";
-import DogimagesContainer from "./components/DogimagesContainer"
+import DoglistContainer from "./components/practice/DoglistContainer";
+import DogimagesContainer from "./components/practice/DogimagesContainer"
 
 // BrowserRouter: import
 import { Route } from "react-router-dom";

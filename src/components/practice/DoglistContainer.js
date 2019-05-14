@@ -9,7 +9,7 @@ import * as request from "superagent";
 import { connect } from "react-redux";
 
 // Action: imports
-import { setDogBreeds } from "../actions/SetDogBreeds";
+import { setDogBreeds } from "../../actions/SetDogbreeds";
 
 
 class DoglistContainer extends Component {
