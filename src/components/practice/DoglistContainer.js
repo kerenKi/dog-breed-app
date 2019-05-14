@@ -46,7 +46,7 @@ class DoglistContainer extends Component {
 // Redux: get part of state
 const mapStateToProps = state => {
   return {
-    dogbreeds: state
+    dogbreeds: state.dogbreeds
   };
 };
 // Redux: connect to state

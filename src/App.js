@@ -16,7 +16,7 @@ class App extends Component {
       <div>
         
         <Route exact path="/list" component={DoglistContainer} />
-        <Route exact path="/images" component={DogimagesContainer} />
+        <Route exact path="/dogbreeds/:breed" component={DogimagesContainer} />
         <Route exact path="/random-question" component={QuestionContainer} />
 
       </div>

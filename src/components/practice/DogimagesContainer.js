@@ -3,25 +3,30 @@ import React, { Component } from "react";
 
 // Superagent: import
 import * as request from "superagent";
+import Dogimages from "./Dogimages";
 
-export default class DogimagesContainer extends Component {
-  
+// Redux: imports
+import { connect } from "react-redux";
+
+// Action: imports
+import { setDogImages } from "../../actions/SetDogimages";
+
+class DogimagesContainer extends Component {
   // Local state
   state = { images: null };
+
+  // Params
+  breed = this.props.match.params.breed;
 
   // Fetching API
   componentDidMount() {
     request
-      .get("https://dog.ceo/api/breed/hound/images")
-      .then(response => this.displayImages(response.body.message))
+      .get("https://dog.ceo/api/breed/" + this.breed + "/images")
+      .then(response => {
+        // Dispatch action to reducer
+        this.props.dispatch(setDogImages(response.body.message));
+      })
       .catch(console.error);
-  }
-
-  displayImages(images) {
-    // Set local state
-    this.setState({
-      images
-    });
   }
 
   render() {
@@ -29,10 +34,26 @@ export default class DogimagesContainer extends Component {
       <div>
         <h1>Dog breed details:</h1>
 
-        {this.state.images && console.log(this.state.images)}
-
-        <ul />
+        <ul>
+          {this.props.dogimages &&
+            this.props.dogimages
+              .filter((image, index) => index < 11)
+              .map((image, index) => {
+                return (
+                  <Dogimages key={index} dbreed={this.breed} img={image} />
+                );
+              })}
+        </ul>
       </div>
     );
   }
 }
+
+// Redux: get part of state
+const mapStateToProps = state => {
+  return {
+    dogimages: state.dogimages
+  };
+};
+// Redux: connect to state
+export default connect(mapStateToProps)(DogimagesContainer);
