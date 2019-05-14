@@ -5,7 +5,7 @@ export default class Dogimages extends Component {
   render() {
     return (
       <div>
-   <h1>Dogdetails</h1>
+        <img src={this.props.img} alt={this.props.breed} />
       </div>
     );
   }
