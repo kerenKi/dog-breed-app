@@ -2,51 +2,16 @@
 import React, { Component } from "react";
 import Answer from "./Answer";
 
-// Superagent: import
-import * as request from "superagent";
-
 // Redux: connect and actions
 import { connect } from "react-redux";
 import { setDogBreeds } from "../../actions/SetDogbreeds";
-import { GetQuestion } from "../../actions/GetQuestion";
+import { GetQuestion, SetQuestion } from "../../actions/GetQuestion";
 import { GetWinner } from "../../actions/GetWinner";
 
-// Function: import
-import GenerateQuestion from "../../functions/GenerateQuestion";
-
 class QuestionContainer extends Component {
-  // Get winning breed function
-  getWinningBreed(array) {
-    return array.find(breed => {
-      return breed.isWinner === true;
-    });
-  }
-
-  // Fetch API
+  // Dispatch question and random pic
   componentDidMount() {
-    request
-      .get("https://dog.ceo/api/breeds/list/all")
-      .then(response => {
-        // Call dogbreeds action creotor
-        this.props.setDogBreeds(Object.keys(response.body.message));
-      })
-      .then(() => {
-        // Get dogbreeds from state
-        const breeds = this.props.dogbreeds;
-        // Get question from function
-        this.props.GetQuestion(GenerateQuestion(breeds));
-        // Get winning breed from state
-        const winningBreed = this.getWinningBreed(this.props.question);
-        // Fetch API with winning breed
-        return request.get(
-          "https://dog.ceo/api/breed/" + winningBreed.breed + "/images/random"
-        );
-      })
-      .then(response => {
-        // Call getwinner action creotor
-        this.props.GetWinner(response.body.message);
-      })
-      .catch(console.error);
+    this.props.SetQuestion();
   }
 
   render() {
@@ -91,5 +56,5 @@ const mapStateToProps = state => {
 // Redux: connect to state, bind action creator
 export default connect(
   mapStateToProps,
-  { setDogBreeds, GetQuestion, GetWinner }
+  { setDogBreeds, GetQuestion, GetWinner, SetQuestion }
 )(QuestionContainer);

@@ -3,6 +3,8 @@ import React, { Component } from "react";
 
 // Superagent: import
 import * as request from "superagent";
+
+// Component: import
 import Dogimages from "./Dogimages";
 
 // Redux: imports
