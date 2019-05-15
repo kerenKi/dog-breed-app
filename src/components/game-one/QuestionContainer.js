@@ -55,8 +55,6 @@ class QuestionContainer extends Component {
     const question = this.props.question;
     const winner = this.props.winner;
 
-
-    console.log("PROPS FROM QUESTION: ", question);
     // Sort question when available (note: array is copied with spread)
     const sortedQuestion =
       question && [...question].sort(() => Math.random() - 0.5);
