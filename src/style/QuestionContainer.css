@@ -1,0 +1,36 @@
+
+.question{
+    text-align: center
+}
+
+.question img{
+    margin: auto;
+    max-width: 400px;
+    max-height: 400px;
+    border-radius: 10px;
+}
+
+.answers_section{
+    width: 10em;
+    float: left;
+    list-style: none; 
+    text-decoration: none;
+    margin: auto;
+    width: 30%;
+}
+
+button{
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px #eee7e7;
+    margin: 10px;
+    background-color: #289acf;
+
+}
+
+.answers_section li{
+    font-size: 30px;
+    color:rgb(255, 243, 227);
+    cursor: pointer;
+    text-align: center;
+    margin: 10px;
+}  

@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 // PropTypes: import
 import PropTypes from "prop-types";
 
-import "./dogListStyle.css";
+// style: import
+import "../../style/dogListStyle.css";
 
 export default class Doglist extends Component {
   // PropTypes: check type of props

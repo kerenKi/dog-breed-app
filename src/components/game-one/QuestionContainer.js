@@ -14,6 +14,10 @@ import { GetWinner } from "../../actions/GetWinner";
 // Function: import
 import GenerateQuestion from "../../functions/GenerateQuestion";
 
+// style: import
+import "../../style/QuestionContainer.css";
+
+
 class QuestionContainer extends Component {
   // Get winning breed function
   getWinningBreed(array) {
@@ -73,7 +77,7 @@ class QuestionContainer extends Component {
       question && [...question].sort(() => Math.random() - 0.5);
 
     return (
-      <div>
+      <div className="question">
         <h2>Which breed am I?</h2>
         <img src={winner && winner} alt="Guess me" />
         <ul>
@@ -81,13 +85,15 @@ class QuestionContainer extends Component {
             sortedQuestion.map((answer, index) => {
               // Map shuffled array. and pass 3 answers as props
               return (
-                <button key={index} onClick={this.handleUserChoice} value={answer.breed}>
-                  <Answer
-                    key={index}
-                    breed={answer.breed}
-                    winner={answer.isWinner}
-                  />
-                </button>
+                <div className="answers_section">
+                  <button key={index} onClick={this.handleUserChoice} value={answer.breed}>
+                    <Answer
+                      key={index}
+                      breed={answer.breed}
+                      winner={answer.isWinner}
+                    />
+                  </button>
+                </div>
               );
             })}
         </ul>
