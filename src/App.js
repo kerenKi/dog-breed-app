@@ -1,6 +1,6 @@
 // React: imports
 import React, { Component } from "react";
-import "./App.css";
+import "./style/App.css";
 
 // Component: imports
 import DoglistContainer from "./components/practice/DoglistContainer";
