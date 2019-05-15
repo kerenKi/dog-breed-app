@@ -17,7 +17,7 @@ export default class Dogimages extends Component {
       margin: '5px',
       width: '250px',
       height:'250px',
-      border: '1px solid dimgrey',
+      border: '1px solid #E8E8E8',
       borderRadius:'20px',
       boxShadow: '2px 2px 2px 2px #eee',
      
