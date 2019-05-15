@@ -14,7 +14,7 @@ import { connect } from "react-redux";
 import { setDogImages } from "../../actions/SetDogimages";
 
 class DogimagesContainer extends Component {
-  // Action creotor call
+  // Get param from url
   breed = this.props.match.params.breed;
 
   // Fetch API

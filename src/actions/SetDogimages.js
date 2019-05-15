@@ -1,4 +1,4 @@
-// Secure against typos
+// Protection against typos
 export const SET_DOGIMAGES = "SET_DOGIMAGES";
 
 export function setDogImages(dogbreeds) {

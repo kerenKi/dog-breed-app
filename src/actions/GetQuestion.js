@@ -13,7 +13,7 @@ function getWinningBreed(array) {
   });
 }
 
-// Secure typos
+// Protection against typos
 export const GET_QUESTION = "GET_QUESTION";
 
 export function GetQuestion(question) {
@@ -45,7 +45,7 @@ export function SetQuestion() {
         );
       })
       .then(response => {
-        // Dispatch GET_WINNER using random pic (API)
+        // Dispatch GET_WINNER with result
         dispatch(GetWinner(response.body.message));
       })
       .catch(console.error);

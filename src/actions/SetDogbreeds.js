@@ -1,7 +1,7 @@
 // Superagent: import
 import * as request from "superagent";
 
-// Secure typos
+// Protection against typos
 export const SET_DOGBREEDS = "SET_DOGBREEDS";
 
 export function setDogBreeds(dogbreeds) {

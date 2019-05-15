@@ -2,8 +2,10 @@
 import React, { Component } from "react";
 import Answer from "./Answer";
 
-// Redux: connect and actions
+// Redux: connect
 import { connect } from "react-redux";
+
+// Action: imports
 import { setDogBreeds } from "../../actions/SetDogbreeds";
 import { GetQuestion, SetQuestion } from "../../actions/GetQuestion";
 import { GetWinner } from "../../actions/GetWinner";
@@ -19,8 +21,8 @@ class QuestionContainer extends Component {
     const question = this.props.question;
     const winner = this.props.winner;
 
-    // Sort question when available (note: array is copied with spread)
-    const sortedQuestion =
+    // Shuffle question  (note: spread operator was necessary)
+    const shuffledQuestion =
       question && [...question].sort(() => Math.random() - 0.5);
 
     return (
@@ -28,9 +30,9 @@ class QuestionContainer extends Component {
         <h2>Which breed am I?</h2>
         <img src={winner && winner} alt="Guess me" />
         <ul>
-          {sortedQuestion &&
-            sortedQuestion.map((answer, index) => {
-              // Map shuffled array. and pass 3 answers as props
+          {shuffledQuestion &&
+            shuffledQuestion.map((answer, index) => {
+              // Map array. pass props
               return (
                 <Answer
                   key={index}

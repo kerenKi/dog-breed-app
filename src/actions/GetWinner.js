@@ -1,4 +1,4 @@
-// Secure against typos
+// Protection against typos
 export const GET_WINNER_RANDOM_PIC = "GET_WINNER_RANDOM_PIC";
 
 export function GetWinner(winnerBreed) {
