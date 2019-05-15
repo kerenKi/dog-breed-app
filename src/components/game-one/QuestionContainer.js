@@ -15,7 +15,6 @@ import { GetWinner } from "../../actions/GetWinner";
 import GenerateQuestion from "../../functions/GenerateQuestion";
 
 class QuestionContainer extends Component {
-  
   // Get winning breed function
   getWinningBreed(array) {
     return array.find(breed => {
@@ -61,11 +60,8 @@ class QuestionContainer extends Component {
 
     return (
       <div>
-        <h1>Which breed am I?</h1>
-        <img
-          src={winner && winner}
-          alt="Guess me"
-        />
+        <h2>Which breed am I?</h2>
+        <img src={winner && winner} alt="Guess me" />
         <ul>
           {sortedQuestion &&
             sortedQuestion.map((answer, index) => {
