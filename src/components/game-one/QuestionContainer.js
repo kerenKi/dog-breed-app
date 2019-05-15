@@ -48,6 +48,20 @@ class QuestionContainer extends Component {
       })
       .catch(console.error);
   }
+    
+  handleUserChoice = (event) => {
+    const winnibgBreedObject = this.getWinningBreed(this.props.question)
+    
+    if (winnibgBreedObject.breed === event.currentTarget.value){
+      alert ('Correct answer!')
+      // add dispatch function here to update 'true' to store
+    } 
+    else {
+      alert ('Wrong answer')
+      // add dispatch function here to update 'false' to store
+    }
+    
+  }
 
   render() {
     // Capture question and winner
@@ -67,11 +81,13 @@ class QuestionContainer extends Component {
             sortedQuestion.map((answer, index) => {
               // Map shuffled array. and pass 3 answers as props
               return (
-                <Answer
-                  key={index}
-                  breed={answer.breed}
-                  winner={answer.isWinner}
-                />
+                <button key={index} onClick={this.handleUserChoice} value={answer.breed}>
+                  <Answer
+                    key={index}
+                    breed={answer.breed}
+                    winner={answer.isWinner}
+                  />
+                </button>
               );
             })}
         </ul>
