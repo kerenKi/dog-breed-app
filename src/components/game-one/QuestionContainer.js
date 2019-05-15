@@ -9,53 +9,54 @@ import * as request from "superagent";
 import { connect } from "react-redux";
 import { setDogBreeds } from "../../actions/SetDogbreeds";
 import { GetQuestion } from "../../actions/GetQuestion";
+import { GetWinner } from "../../actions/GetWinner";
 
 // Function: import
 import GenerateQuestion from "../../functions/GenerateQuestion";
 
 class QuestionContainer extends Component {
-  /*   // Get the winning breed: logic
+  
+  // Get winning breed function
   getWinningBreed(array) {
     return array.find(breed => {
       return breed.isWinner === true;
     });
   }
 
-  // Get the winning breed: capture
-  winningBreed = this.getWinningBreed(this.generatedQuestion); */
-
   // Fetch API
   componentDidMount() {
     request
       .get("https://dog.ceo/api/breeds/list/all")
       .then(response => {
-        // Action creotor call
+        // Call dogbreeds action creotor
         this.props.setDogBreeds(Object.keys(response.body.message));
-        return request.get("secondurl");
+      })
+      .then(() => {
+        // Get dogbreeds from state
+        const breeds = this.props.dogbreeds;
+        // Get question from function
+        this.props.GetQuestion(GenerateQuestion(breeds));
+        // Get winning breed from state
+        const winningBreed = this.getWinningBreed(this.props.question);
+        // Fetch API with winning breed
+        return request.get(
+          "https://dog.ceo/api/breed/" + winningBreed.breed + "/images/random"
+        );
       })
       .then(response => {
-        const breeds = this.props.dogbreeds;
-        this.props.GetQuestion(GenerateQuestion(breeds));
+        // Call getwinner action creotor
+        this.props.GetWinner(response.body.message);
       })
       .catch(console.error);
   }
 
-  /* componentDidMount() {    
-    request
-      .get(
-        "https://dog.ceo/api/breed/" +
-          this.winningBreed.breed +
-          "/images/random"
-      )
-      .then(response => {
-        console.log(response.body.message);
-      })
-      .catch(console.error);
-  } */
-
   render() {
-    // Capture question
+    // Capture question and winner
     const question = this.props.question;
+    const winner = this.props.winner;
+
+
+    console.log("PROPS FROM QUESTION: ", question);
     // Sort question when available (note: array is copied with spread)
     const sortedQuestion =
       question && [...question].sort(() => Math.random() - 0.5);
@@ -64,7 +65,7 @@ class QuestionContainer extends Component {
       <div>
         <h1>Which breed am I?</h1>
         <img
-          src="https://images.dog.ceo/breeds/hound-afghan/n02088094_1003.jpg"
+          src={winner && winner}
           alt="Guess me"
         />
         <ul>
@@ -89,11 +90,12 @@ class QuestionContainer extends Component {
 const mapStateToProps = state => {
   return {
     dogbreeds: state.dogbreeds,
-    question: state.question
+    question: state.question,
+    winner: state.getwinner
   };
 };
 // Redux: connect to state, bind action creator
 export default connect(
   mapStateToProps,
-  { setDogBreeds, GetQuestion }
+  { setDogBreeds, GetQuestion, GetWinner }
 )(QuestionContainer);
