@@ -37,9 +37,7 @@ class DogimagesContainer extends Component {
             this.props.dogimages
               .filter((image, index) => index < 11)
               .map((image, index) => {
-                return (
-                  <Dogimages key={index} breed={this.breed} img={image} />
-                );
+                return <Dogimages key={index} breed={this.breed} img={image} />;
               })}
         </ul>
       </div>
