@@ -1,5 +1,11 @@
+.dog-list-style ul{
+  margin-left: 30px;
+}
 .dog-list-style li{
   font-size: 30px;
+  background-image: linear-gradient(to right, #f1cedc, #f1dbd3, #e2ccd4 , rgb(248, 233, 209));
+  width: 200px;
+  float: left;
   list-style: none; 
   text-align: center;
   border: 2px solid #fff;

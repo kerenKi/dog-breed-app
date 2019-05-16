@@ -46,31 +46,7 @@ class QuestionContainer extends Component {
        this.props.setGameScore(false);
        this.props.getQuestionResult(false); 
      }
-
   };  
-  // handleUserChoice = (event) => {
-  //   //return an object of the winnig breed
-  //   const winningBreedObject = getWinningBreed(this.props.question)
-    
-  //   //set the QuestionResult back to null after 1.5 seconds
-  //   setTimeout(()=>this.props.getQuestionResult(null),1500)
-    
-  //   //dispatch new question after 1.5 seconds
-  //   this.props.questionresult === null && setTimeout(()=>this.props.SetQuestion(null),1500)
-    
-    
-  //   if (winningBreedObject.breed === event.currentTarget.value){
-  //     // add dispatch function here to update 'true' to store
-  //     this.props.setGameScore(true);
-  //     this.props.getQuestionResult(true);
-  //   } 
-  //   else {
-  //     // add dispatch function here to update 'false' to store
-  //     this.props.setGameScore(false);
-  //     this.props.getQuestionResult(false); 
-  //   }
-  // }
-  
   
   render() {
     // Capture question and winner

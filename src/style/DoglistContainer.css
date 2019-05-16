@@ -1,0 +1,33 @@
+.title{
+    text-align: center;
+    color: sienna;
+    position: relative;
+    right: 50px;
+}
+
+p {
+    position: relative;
+    right: 50px;
+}
+.playGameButton {
+    float: left;
+    background-image: linear-gradient(to right, #ed6e6e, #f58d68, #f71848 , rgb(243, 40, 74));
+    box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
+    width: 200px;
+    height: 60px;
+    text-align: center;
+    margin: auto;
+    color: aliceblue;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding-top: 5px;    
+    border-radius: 50px;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    position: relative;
+    left: 170px;
+    
+}
+

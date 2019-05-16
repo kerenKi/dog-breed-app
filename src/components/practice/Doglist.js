@@ -18,11 +18,13 @@ export default class Doglist extends Component {
   render() {
     return (
       <div className="dog-list-style">
-        <li>
-          <Link to={"/dogbreeds/" + this.props.dogbreed}>
-            {this.props.dogbreed}
-          </Link>
-        </li>
+        <ul>
+          <li>
+            <Link to={"/dogbreeds/" + this.props.dogbreed}>
+              {this.props.dogbreed}
+            </Link>
+          </li>
+        </ul>  
       </div>
       
     );

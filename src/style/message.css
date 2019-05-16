@@ -1,0 +1,28 @@
+.correctAnswer {
+    background-color: rgb(28, 179, 28);
+    width: 400px;
+    height: 60px;
+    color:rgb(255, 243, 227);
+    text-align: center;
+    margin: auto;
+    padding-top: 30px;
+    position: relative;
+    left: 10px; 
+    font-size: 30px;
+
+
+
+}
+
+.wrongAnswer {
+    background-color: rgb(179, 38, 28);
+    width: 400px;
+    height: 60px;
+    color:rgb(255, 243, 227);
+    text-align: center;
+    margin: auto;
+    padding-top: 10px; 
+    position: relative;
+    left: 10px;
+    font-size: 20px;
+}

@@ -9,6 +9,9 @@ import { getDogBreeds } from "../../actions/SetDogbreeds";
 //Link: imports
 import {Link} from 'react-router-dom'
 
+//style: import
+import '../../style/DoglistContainer.css'
+
 class DoglistContainer extends Component {
   // Fetch dogbreeds and dispatch
   componentDidMount() {
@@ -21,8 +24,10 @@ class DoglistContainer extends Component {
 
     return (
       <div>
+        <Link className="playGameButton" to='/game-one'> I want to play the game!</Link>
        
-        <h1 style={{textAlign:'center' , color:'sienna'}}>Dog breed list</h1>
+        <h1 className="title" >Dog breed list</h1>
+        <p>Click on the name of the breed to see what it looks like</p>
 
         {dogbreeds &&
           // If exists, map array & pass props
@@ -31,7 +36,6 @@ class DoglistContainer extends Component {
           })}
 
         <ul />
-        <Link to='/game-one'> I'm ready, LET'S PLAY</Link>
       </div>
      
     );

@@ -1,0 +1,13 @@
+.answerButton{
+    font-size: 30px;
+    width: 250px;
+    height: 60px;
+    color:rgb(255, 243, 227);
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 2px #c2bfbf;
+    margin: 10px;
+    background-color: #289acf;
+
+}

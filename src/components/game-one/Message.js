@@ -10,6 +10,9 @@ import { connect } from "react-redux";
 //finction: import
 import { getWinningBreed } from '../../actions/GetQuestion'
 
+//style: import
+import '../../style/message.css'
+
 
 class Message extends Component {
   // PropTypes: check type of props
@@ -25,8 +28,8 @@ class Message extends Component {
       <div>
         <span>
           {this.props.questionresult ?
-            <p>your answer is correct</p> : 
-            <p>Wrong answer! <br/> Right answer was {winningBreedObject.breed} </p> 
+            <p className="correctAnswer">your answer is correct</p> : 
+            <p className="wrongAnswer">Wrong! <br/> Right answer was <strong> {winningBreedObject.breed}</strong> </p> 
           }
         </span> 
       </div>
