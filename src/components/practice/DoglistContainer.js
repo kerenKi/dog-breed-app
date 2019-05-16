@@ -9,6 +9,8 @@ import * as request from "superagent";
 import { connect } from "react-redux";
 import { setDogBreeds } from "../../actions/SetDogbreeds";
 
+//Link: imports
+import {Link} from 'react-router-dom'
 
 class DoglistContainer extends Component {
   // Fetch API
@@ -38,7 +40,7 @@ class DoglistContainer extends Component {
           })}
 
         <ul />
-       
+        <Link to='/game-one'> I'm ready, LET'S PLAY</Link>
       </div>
      
     );
