@@ -1,13 +1,21 @@
-// Store: import
-import { createStore } from "redux";
+// Store: imports
+import { createStore, applyMiddleware, compose } from "redux";
 import reducer from "./reducers";
 
-// DEV tools setup
-const enhancer =
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+// Thunks: import
+import ReduxThunk from "redux-thunk";
 
-// Store: creation
+// DEV tools: setup
+const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
+  ? window.__REDUX_DEVTOOLS_EXTENSION__()
+  : f => f;
+
+// Thunks: Add middleware
+const enhancer = compose(
+  applyMiddleware(ReduxThunk),
+  devTools
+);
+
+// Store: creation and export
 const store = createStore(reducer, enhancer);
-
-// Store: export
 export default store;

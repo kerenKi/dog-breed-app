@@ -2,24 +2,15 @@
 import React, { Component } from "react";
 import Doglist from "./Doglist";
 
-// Superagent: imports
-import * as request from "superagent";
-
 // Redux: connect and actions
 import { connect } from "react-redux";
-import { setDogBreeds } from "../../actions/SetDogbreeds";
+import { getDogBreeds } from "../../actions/SetDogbreeds";
 
 
 class DoglistContainer extends Component {
-  // Fetch API
+  // Fetch dogbreeds and dispatch
   componentDidMount() {
-    request
-      .get("https://dog.ceo/api/breeds/list/all")
-      .then(response => {
-        // Action creotor call
-        this.props.setDogBreeds(Object.keys(response.body.message));
-      })
-      .catch(console.error);
+    this.props.getDogBreeds();
   }
 
   render() {
@@ -54,5 +45,5 @@ const mapStateToProps = state => {
 // Redux: connect to state, bind action creator
 export default connect(
   mapStateToProps,
-  { setDogBreeds }
+  { getDogBreeds }
 )(DoglistContainer);
