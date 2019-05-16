@@ -10,6 +10,7 @@ export function setDogBreeds(dogbreeds) {
     type: SET_DOGBREEDS,
     payload: dogbreeds
   };
+
 }
 
 export function getDogBreeds() {
@@ -23,3 +24,4 @@ export function getDogBreeds() {
       .catch(console.error);
   };
 }
+

@@ -12,7 +12,8 @@ export default class Answer extends Component {
   };
 
   render() {
+    const breedCapitalized = this.props.breed.charAt(0).toUpperCase() + this.props.breed.slice(1)
     // Render answer
-    return <li winner={this.props.isWinner}>{this.props.breed}</li>;
+    return <li winner={this.props.isWinner}>{breedCapitalized}</li>;
   }
 }

@@ -31,7 +31,7 @@ class DogimagesContainer extends Component {
   render() {
     return (
       <div>
-        <h1>Images of {this.breed}</h1>
+        <h1 style={{textAlign:'center' , color:'sienna'}}>Images of {this.breed}</h1>
 
         <ul>
           {this.props.dogimages &&

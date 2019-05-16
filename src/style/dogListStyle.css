@@ -1,0 +1,15 @@
+.dog-list-style li{
+  font-size: 30px;
+  list-style: none; 
+  text-align: center;
+  border: 2px solid #fff;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 2px 2px 2px 2px #eee;
+  cursor: pointer;
+}
+.dog-list-style li a{
+  text-decoration: none;
+  font-size: 25px;
+  color: chocolate;
+}

@@ -7,6 +7,9 @@ import { Link } from "react-router-dom";
 // PropTypes: import
 import PropTypes from "prop-types";
 
+// style: import
+import "../../style/dogListStyle.css";
+
 export default class Doglist extends Component {
   // PropTypes: check type of props
   static propTypes = {
@@ -14,13 +17,14 @@ export default class Doglist extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="dog-list-style">
         <li>
           <Link to={"/dogbreeds/" + this.props.dogbreed}>
             {this.props.dogbreed}
           </Link>
         </li>
       </div>
+      
     );
   }
 }

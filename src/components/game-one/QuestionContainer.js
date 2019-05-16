@@ -10,10 +10,27 @@ import { setDogBreeds } from "../../actions/SetDogbreeds";
 import { GetQuestion, SetQuestion } from "../../actions/GetQuestion";
 import { GetWinner } from "../../actions/GetWinner";
 
+// Style: import
+import "../../style/QuestionContainer.css";
+
 class QuestionContainer extends Component {
   // Dispatch question and random pic
   componentDidMount() {
     this.props.SetQuestion();
+  }
+    
+  handleUserChoice = (event) => {
+    const winnibgBreedObject = this.getWinningBreed(this.props.question)
+    
+    if (winnibgBreedObject.breed === event.currentTarget.value){
+      alert ('Correct answer!')
+      // add dispatch function here to update 'true' to store
+    } 
+    else {
+      alert ('Wrong answer')
+      // add dispatch function here to update 'false' to store
+    }
+    
   }
 
   render() {
@@ -26,7 +43,7 @@ class QuestionContainer extends Component {
       question && [...question].sort(() => Math.random() - 0.5);
 
     return (
-      <div>
+      <div className="question">
         <h2>Which breed am I?</h2>
         <img src={winner && winner} alt="Guess me" />
         <ul>
@@ -34,11 +51,15 @@ class QuestionContainer extends Component {
             shuffledQuestion.map((answer, index) => {
               // Map array. pass props
               return (
-                <Answer
-                  key={index}
-                  breed={answer.breed}
-                  winner={answer.isWinner}
-                />
+                <div className="answers_section">
+                  <button key={index} onClick={this.handleUserChoice} value={answer.breed}>
+                    <Answer
+                      key={index}
+                      breed={answer.breed}
+                      winner={answer.isWinner}
+                    />
+                  </button>
+                </div>
               );
             })}
         </ul>

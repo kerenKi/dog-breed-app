@@ -6,6 +6,7 @@ import Doglist from "./Doglist";
 import { connect } from "react-redux";
 import { getDogBreeds } from "../../actions/SetDogbreeds";
 
+
 class DoglistContainer extends Component {
   // Fetch dogbreeds and dispatch
   componentDidMount() {
@@ -14,10 +15,12 @@ class DoglistContainer extends Component {
 
   render() {
     const dogbreeds = this.props.dogbreeds;
+    
 
     return (
       <div>
-        <h1>Dog breed list:</h1>
+       
+        <h1 style={{textAlign:'center' , color:'sienna'}}>Dog breed list</h1>
 
         {dogbreeds &&
           // If exists, map array & pass props
@@ -26,7 +29,9 @@ class DoglistContainer extends Component {
           })}
 
         <ul />
+       
       </div>
+     
     );
   }
 }
