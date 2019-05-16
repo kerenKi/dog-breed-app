@@ -6,6 +6,7 @@ import GenerateQuestion from "../functions/GenerateQuestion";
 import { setDogBreeds } from "../actions/SetDogbreeds";
 import { GetWinner } from "../actions/GetWinner";
 
+
 // Function: local
 function getWinningBreed(array) {
   return array.find(breed => {
