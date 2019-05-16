@@ -13,6 +13,10 @@ import { connect } from "react-redux";
 // Action: imports
 import { setDogImages } from "../../actions/SetDogimages";
 
+//Link: imports
+import {Link} from 'react-router-dom'
+
+
 class DogimagesContainer extends Component {
   // Get param from url
   breed = this.props.match.params.breed;
@@ -32,7 +36,6 @@ class DogimagesContainer extends Component {
     return (
       <div>
         <h1 style={{textAlign:'center' , color:'sienna'}}>Images of {this.breed}</h1>
-
         <ul>
           {this.props.dogimages &&
             // If exists, filter and map array, then pass props
@@ -42,6 +45,8 @@ class DogimagesContainer extends Component {
                 return <Dogimages key={index} breed={this.breed} img={image} />;
               })}
         </ul>
+        <Link to='/list'> Go back to the breed list</Link>
+
       </div>
     );
   }

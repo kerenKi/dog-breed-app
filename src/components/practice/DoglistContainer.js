@@ -6,6 +6,8 @@ import Doglist from "./Doglist";
 import { connect } from "react-redux";
 import { getDogBreeds } from "../../actions/SetDogbreeds";
 
+//Link: imports
+import {Link} from 'react-router-dom'
 
 class DoglistContainer extends Component {
   // Fetch dogbreeds and dispatch
@@ -29,7 +31,7 @@ class DoglistContainer extends Component {
           })}
 
         <ul />
-       
+        <Link to='/game-one'> I'm ready, LET'S PLAY</Link>
       </div>
      
     );

@@ -12,8 +12,9 @@ export default class Answer extends Component {
   };
 
   render() {
-    const breedCapitalized = this.props.breed.charAt(0).toUpperCase() + this.props.breed.slice(1)
+    // const breedCapitalized = this.props.breed.charAt(0).toUpperCase() + this.props.breed.slice(1)
+    // console.log(breedCapitalized)
     // Render answer
-    return <li winner={this.props.isWinner}>{breedCapitalized}</li>;
+    return <button onClick={this.props.onClick}>{this.props.breed}</button>;
   }
 }
