@@ -16,6 +16,7 @@ import { getQuestionResult } from "../../actions/QuestionResult";
 
 // Style: import
 import "../../style/QuestionContainer.css";
+ import Score from "./Score";
 
 class QuestionContainer extends Component {
   // Dispatch question and random pic
@@ -60,15 +61,16 @@ class QuestionContainer extends Component {
       <div className="question">
       {/* let the user know the anser: */}
       {this.props.questionresult !== null && <Message questionresult={this.props.questionresult} />}
-
-      <h2>Which breed am I?</h2>
+      <Score />
+      
+      <h2>Which breed am I?</h2>      
       <img src={winner && winner} alt="Guess me" />
       <ul>
       {shuffledQuestion &&
         shuffledQuestion.map((answer, index) => {
           // Map array. pass props
           return (
-            <div className="answers_section">
+            <div className="answers_section">          
             <button key={index} onClick={this.handleUserChoice} value={answer.breed}>
             <Answer
             key={index}

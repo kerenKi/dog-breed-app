@@ -1,0 +1,35 @@
+.main{
+  background-image: url('https://assets.awwwards.com/awards/images/2015/04/pattern.jpg');
+  background-size:  cover;
+  height:-webkit-fill-available;
+}
+
+
+.practice {
+  background-repeat: no-repeat;
+  position: relative;
+  left:4%;
+   top:40px;
+   float: left;
+   margin-right: 40px
+ 
+}
+.practice img  {
+  width: 300px;
+  height:300px;
+  box-shadow: 2px 2px 2px 2px #eee7e7;
+  border: 1px solid #fff;
+  border-radius: 25px;
+}
+h1{
+  text-align: center;
+  color: sienna;
+}
+.practice h3 {
+margin-top: 10px;
+padding-left: 85px;
+color:chocolate;
+width: 200px;
+border: 1px solid #fff;
+box-shadow: 2px  #eee7e7;
+}
