@@ -8,7 +8,7 @@ import { GetWinner } from "../actions/GetWinner";
 
 
 // Function: local
-function getWinningBreed(array) {
+export function getWinningBreed(array) {
   return array.find(breed => {
     return breed.isWinner === true;
   });

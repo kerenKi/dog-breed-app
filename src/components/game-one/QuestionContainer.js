@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 
 // Action: imports
 import { setDogBreeds } from "../../actions/SetDogbreeds";
-import { GetQuestion, SetQuestion } from "../../actions/GetQuestion";
+import { GetQuestion, SetQuestion, getWinningBreed } from "../../actions/GetQuestion";
 import { GetWinner } from "../../actions/GetWinner";
 
 // Style: import
@@ -20,9 +20,9 @@ class QuestionContainer extends Component {
   }
     
   handleUserChoice = (event) => {
-    const winnibgBreedObject = this.getWinningBreed(this.props.question)
+    const winningBreedObject = getWinningBreed(this.props.question)
     
-    if (winnibgBreedObject.breed === event.currentTarget.value){
+    if (winningBreedObject.breed === event.currentTarget.value){
       alert ('Correct answer!')
       // add dispatch function here to update 'true' to store
     } 
