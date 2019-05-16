@@ -6,6 +6,7 @@ import "./style/App.css";
 import DoglistContainer from "./components/practice/DoglistContainer";
 import DogimagesContainer from "./components/practice/DogimagesContainer";
 import GameOne from "./components/game-one/GameOne";
+import TrueFalse from "./components/game-one/TrueFalse";
 
 // BrowserRouter: import
 import { Route } from "react-router-dom";
@@ -17,6 +18,7 @@ class App extends Component {
         <Route exact path="/list" component={DoglistContainer} />
         <Route exact path="/dogbreeds/:breed" component={DogimagesContainer} />
         <Route exact path="/game-one" component={GameOne} />
+        <Route exact path="/true-false" component={TrueFalse} />
       </div>
     );
   }
