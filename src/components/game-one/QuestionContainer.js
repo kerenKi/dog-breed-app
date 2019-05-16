@@ -11,6 +11,7 @@ import { setDogBreeds } from "../../actions/SetDogbreeds";
 import { GetQuestion } from "../../actions/GetQuestion";
 import { GetWinner } from "../../actions/GetWinner";
 
+
 // Function: import
 import GenerateQuestion from "../../functions/GenerateQuestion";
 
@@ -59,13 +60,38 @@ class QuestionContainer extends Component {
     if (winnibgBreedObject.breed === event.currentTarget.value){
       alert ('Correct answer!')
       // add dispatch function here to update 'true' to store
+   
     } 
     else {
       alert ('Wrong answer')
       // add dispatch function here to update 'false' to store
+    
     }
     
   }
+
+  //correct answer func and wrong answer func:
+
+  // clickCorrectAns = () =>{
+  //   this.setState({...this.state,correct:true,wrong:false})
+  //   }
+  
+    
+    clickWrongAns = () =>{
+      // this.setState({...this.state,correct:false,wrong:true})
+      setTimeout(function(){
+        console.log('ask next question')
+        //dispatch new question here....
+      },2000)
+    
+    }
+
+    renderResult = () =>{
+      return (
+        <span>{this.state.correct?<p>your answer is correct</p>:''}
+        {this.state.wrong?<p>Right answer was {this.state.ans} </p>:''}</span>
+        )
+      }  
 
   render() {
     // Capture question and winner
@@ -78,6 +104,9 @@ class QuestionContainer extends Component {
 
     return (
       <div className="question">
+      {/* let the user know the anser: */}
+        {this.renderResult()}
+
         <h2>Which breed am I?</h2>
         <img src={winner && winner} alt="Guess me" />
         <ul>
