@@ -3,6 +3,8 @@ import React, { Component } from "react";
 
 // Superagent: import
 import * as request from "superagent";
+
+// Component: import
 import Dogimages from "./Dogimages";
 
 // Redux: imports
@@ -16,7 +18,7 @@ import {Link} from 'react-router-dom'
 
 
 class DogimagesContainer extends Component {
-  // Action creotor call
+  // Get param from url
   breed = this.props.match.params.breed;
 
   // Fetch API

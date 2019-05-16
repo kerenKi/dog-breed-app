@@ -21,7 +21,6 @@ class App extends Component {
         <Route exact path="/dogbreeds/:breed" component={DogimagesContainer} />
         <Route exact path="/game-one" component={GameOne} />
         <Route exact path="/" component={MainPage} />
-      
 
       </div>
     );

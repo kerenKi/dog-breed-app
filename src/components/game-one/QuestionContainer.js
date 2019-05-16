@@ -1,117 +1,103 @@
 // React: imports
 import React, { Component } from "react";
 import Answer from "./Answer";
+import Message from './Message'
 
-// Superagent: import
-import * as request from "superagent";
-
-// Redux: connect and actions
+// Redux: connect
 import { connect } from "react-redux";
+
+// Action: imports
 import { setDogBreeds } from "../../actions/SetDogbreeds";
-import { GetQuestion } from "../../actions/GetQuestion";
+import { GetQuestion, SetQuestion, getWinningBreed } from "../../actions/GetQuestion";
 import { GetWinner } from "../../actions/GetWinner";
+import { setGameScore } from "../../actions/SetGameScore";
+import { getQuestionResult } from "../../actions/QuestionResult";
 
-// Function: import
-import GenerateQuestion from "../../functions/GenerateQuestion";
 
-// style: import
+// Style: import
 import "../../style/QuestionContainer.css";
 
-
 class QuestionContainer extends Component {
-  // Get winning breed function
-  getWinningBreed(array) {
-    return array.find(breed => {
-      return breed.isWinner === true;
-    });
-  }
-
-  // Fetch API
+  // Dispatch question and random pic
   componentDidMount() {
-    request
-      .get("https://dog.ceo/api/breeds/list/all")
-      .then(response => {
-        // Call dogbreeds action creotor
-        this.props.setDogBreeds(Object.keys(response.body.message));
-      })
-      .then(() => {
-        // Get dogbreeds from state
-        const breeds = this.props.dogbreeds;
-        // Get question from function
-        this.props.GetQuestion(GenerateQuestion(breeds));
-        // Get winning breed from state
-        const winningBreed = this.getWinningBreed(this.props.question);
-        // Fetch API with winning breed
-        return request.get(
-          "https://dog.ceo/api/breed/" + winningBreed.breed + "/images/random"
-        );
-      })
-      .then(response => {
-        // Call getwinner action creotor
-        this.props.GetWinner(response.body.message);
-      })
-      .catch(console.error);
+    this.props.SetQuestion();
   }
-    
+  
   handleUserChoice = (event) => {
-    const winnibgBreedObject = this.getWinningBreed(this.props.question)
+    //return an object of the winnig breed
+    const winningBreedObject = getWinningBreed(this.props.question)
     
-    if (winnibgBreedObject.breed === event.currentTarget.value){
-      alert ('Correct answer!')
+    //set the QuestionResult back to null after 1.5 seconds
+    setTimeout(()=>this.props.getQuestionResult(null),1500)
+    
+    //dispatch new question after 1.5 seconds
+    this.props.questionresult === null && setTimeout(()=>this.props.SetQuestion(null),1500)
+    
+    
+    if (winningBreedObject.breed === event.currentTarget.value){
       // add dispatch function here to update 'true' to store
+      this.props.setGameScore(true);
+      this.props.getQuestionResult(true);
     } 
     else {
-      alert ('Wrong answer')
       // add dispatch function here to update 'false' to store
+      this.props.setGameScore(false);
+      this.props.getQuestionResult(false); 
     }
-    
   }
-
+  
+  
   render() {
     // Capture question and winner
     const question = this.props.question;
     const winner = this.props.winner;
-
-    // Sort question when available (note: array is copied with spread)
-    const sortedQuestion =
-      question && [...question].sort(() => Math.random() - 0.5);
-
+    
+    // Shuffle question  (note: spread operator was necessary)
+    const shuffledQuestion =
+    question && [...question].sort(() => Math.random() - 0.5);
+    
     return (
       <div className="question">
-        <h2>Which breed am I?</h2>
-        <img src={winner && winner} alt="Guess me" />
-        <ul>
-          {sortedQuestion &&
-            sortedQuestion.map((answer, index) => {
-              // Map shuffled array. and pass 3 answers as props
-              return (
-                <div className="answers_section">
-                  <button key={index} onClick={this.handleUserChoice} value={answer.breed}>
-                    <Answer
-                      key={index}
-                      breed={answer.breed}
-                      winner={answer.isWinner}
-                    />
-                  </button>
-                </div>
-              );
-            })}
-        </ul>
-      </div>
-    );
-  }
-}
+      {/* let the user know the anser: */}
+      {this.props.questionresult !== null && <Message questionresult={this.props.questionresult} />}
 
-// Redux: get both part of states
-const mapStateToProps = state => {
-  return {
-    dogbreeds: state.dogbreeds,
-    question: state.question,
-    winner: state.getwinner
-  };
-};
-// Redux: connect to state, bind action creator
-export default connect(
-  mapStateToProps,
-  { setDogBreeds, GetQuestion, GetWinner }
-)(QuestionContainer);
+      <h2>Which breed am I?</h2>
+      <img src={winner && winner} alt="Guess me" />
+      <ul>
+      {shuffledQuestion &&
+        shuffledQuestion.map((answer, index) => {
+          // Map array. pass props
+          return (
+            <div className="answers_section">
+            <button key={index} onClick={this.handleUserChoice} value={answer.breed}>
+            <Answer
+            key={index}
+            breed={answer.breed}
+            winner={answer.isWinner}
+            />
+            </button>
+            </div>
+            );
+          })}
+          </ul>
+          </div>
+          );
+        }
+      }
+      
+      // Redux: get both part of states
+      const mapStateToProps = state => {
+        return {
+          dogbreeds: state.dogbreeds,
+          question: state.question,
+          winner: state.getwinner,
+          questionresult: state.questionresult
+          
+        };
+      };
+      // Redux: connect to state, bind action creator
+      export default connect(
+        mapStateToProps,
+        { setDogBreeds, GetQuestion, GetWinner, SetQuestion, setGameScore,getQuestionResult }
+        )(QuestionContainer);
+        
