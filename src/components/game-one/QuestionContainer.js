@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { setDogBreeds } from "../../actions/SetDogbreeds";
 import { GetQuestion, SetQuestion, getWinningBreed } from "../../actions/GetQuestion";
 import { GetWinner } from "../../actions/GetWinner";
+import { setGameScore } from "../../actions/SetGameScore";
 
 // Style: import
 import "../../style/QuestionContainer.css";
@@ -25,10 +26,13 @@ class QuestionContainer extends Component {
     if (winningBreedObject.breed === event.currentTarget.value){
       alert ('Correct answer!')
       // add dispatch function here to update 'true' to store
+      this.props.setGameScore(true);
+
     } 
     else {
       alert ('Wrong answer')
       // add dispatch function here to update 'false' to store
+      this.props.setGameScore(false);
     }
     
   }
@@ -79,5 +83,5 @@ const mapStateToProps = state => {
 // Redux: connect to state, bind action creator
 export default connect(
   mapStateToProps,
-  { setDogBreeds, GetQuestion, GetWinner, SetQuestion }
+  { setDogBreeds, GetQuestion, GetWinner, SetQuestion, setGameScore }
 )(QuestionContainer);
