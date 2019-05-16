@@ -69,7 +69,7 @@ class QuestionContainer extends Component {
           // Map array. pass props
           return (
             <div className="answers_section">
-            <button key={index} onClick={this.handleUserChoice} value={answer.breed}>
+             <button key={index} onClick={this.handleUserChoice} value={answer.breed}>
             <Answer
             key={index}
             breed={answer.breed}
