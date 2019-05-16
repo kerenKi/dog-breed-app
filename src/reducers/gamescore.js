@@ -3,6 +3,9 @@ const reducer = (state = [], action = {}) => {
     // Add score
     case "SET_GAMESCORE":
       return [...state, action.payload];
+    // Set the scoer to be an empty array  
+    case "RESET_GAMESCORE":
+      return action.payload  
     default:
       return state;
   }
