@@ -23,28 +23,53 @@ class QuestionContainer extends Component {
     this.props.SetQuestion();
   }
   
-  handleUserChoice = (event) => {
-    //return an object of the winnig breed
-    const winningBreedObject = getWinningBreed(this.props.question)
+  clickedAnswer = answer => e => {
+    e.preventDefault();
+
+     //return an object of the winnig breed
+     const winningBreedObject = getWinningBreed(this.props.question)
     
-    //set the QuestionResult back to null after 1.5 seconds
-    setTimeout(()=>this.props.getQuestionResult(null),1500)
+     //set the QuestionResult back to null after 1.5 seconds
+     setTimeout(()=>this.props.getQuestionResult(null),1500)
+     
+     //dispatch new question after 1.5 seconds
+     this.props.questionresult === null && setTimeout(()=>this.props.SetQuestion(null),1500)
+     
+     
+     if (winningBreedObject.breed === answer[0]){
+       // add dispatch function here to update 'true' to store
+       this.props.setGameScore(true);
+       this.props.getQuestionResult(true);
+     } 
+     else {
+       // add dispatch function here to update 'false' to store
+       this.props.setGameScore(false);
+       this.props.getQuestionResult(false); 
+     }
+
+  };  
+  // handleUserChoice = (event) => {
+  //   //return an object of the winnig breed
+  //   const winningBreedObject = getWinningBreed(this.props.question)
     
-    //dispatch new question after 1.5 seconds
-    this.props.questionresult === null && setTimeout(()=>this.props.SetQuestion(null),1500)
+  //   //set the QuestionResult back to null after 1.5 seconds
+  //   setTimeout(()=>this.props.getQuestionResult(null),1500)
+    
+  //   //dispatch new question after 1.5 seconds
+  //   this.props.questionresult === null && setTimeout(()=>this.props.SetQuestion(null),1500)
     
     
-    if (winningBreedObject.breed === event.currentTarget.value){
-      // add dispatch function here to update 'true' to store
-      this.props.setGameScore(true);
-      this.props.getQuestionResult(true);
-    } 
-    else {
-      // add dispatch function here to update 'false' to store
-      this.props.setGameScore(false);
-      this.props.getQuestionResult(false); 
-    }
-  }
+  //   if (winningBreedObject.breed === event.currentTarget.value){
+  //     // add dispatch function here to update 'true' to store
+  //     this.props.setGameScore(true);
+  //     this.props.getQuestionResult(true);
+  //   } 
+  //   else {
+  //     // add dispatch function here to update 'false' to store
+  //     this.props.setGameScore(false);
+  //     this.props.getQuestionResult(false); 
+  //   }
+  // }
   
   
   render() {
@@ -66,18 +91,15 @@ class QuestionContainer extends Component {
       <ul>
       {shuffledQuestion &&
         shuffledQuestion.map((answer, index) => {
-          // Map array. pass props
+          // Map array, pass props, capture clicked answer
           return (
-            <div className="answers_section">
-             <button key={index} onClick={this.handleUserChoice} value={answer.breed}>
             <Answer
-            key={index}
-            breed={answer.breed}
-            winner={answer.isWinner}
+              key={index}
+              breed={answer.breed}
+              winner={answer.isWinner}
+              onClick={this.clickedAnswer([answer.breed, answer.isWinner])}
             />
-            </button>
-            </div>
-            );
+          );
           })}
           </ul>
           </div>
