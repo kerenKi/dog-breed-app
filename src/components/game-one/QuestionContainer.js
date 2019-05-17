@@ -75,6 +75,7 @@ class QuestionContainer extends Component {
         {this.props.questionresult !== null && (
           <Message questionresult={this.props.questionresult} />
         )}
+         <Score />
 
         <h2>Which breed am I?</h2>
         <img
