@@ -8,36 +8,32 @@ import QuestionContainer from "./QuestionContainer";
 import { connect } from "react-redux";
 
 //action: import
-import resetGameScore from '../../actions/ResetGameScore'
+import resetGameScore from "../../actions/ResetGameScore";
 
 //alert: import
-import SweetAlert from 'react-bootstrap-sweetalert'
+import SweetAlert from "react-bootstrap-sweetalert";
 
 //route redirect import
-import { Redirect } from 'react-router';
+import { Redirect } from "react-router";
 
 // Style: import
 import "../../style/GameOne.css";
 
- class GameOne extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      alert: null
-    };
-  }  
+class GameOne extends Component {
+  state = {
+    alert: null
+  };
 
   exitGame() {
     const getAlert = () => (
-      <SweetAlert 
+      <SweetAlert
         warning
         showCancel
         confirmBtnText="Yes, I want to exit!"
         cancelBtnText="Ok, I'll keep playing"
         confirmBtnBsStyle="danger"
         cancelBtnBsStyle="warning"
-        title="Are you sure?" 
+        title="Are you sure?"
         onConfirm={this.handleClick}
         onCancel={() => this.hideAlert()}
       >
@@ -57,24 +53,28 @@ import "../../style/GameOne.css";
   }
 
   handleClick = () => {
-    this.setState({redirect: true});
-    this.props.resetGameScore()
-  }
+    this.setState({ redirect: true });
+    this.props.resetGameScore();
+  };
   render() {
     if (this.state.redirect) {
       return <Redirect push to="/" />;
     }
     return (
-      
       <div>
         <h1>Game 1</h1>
         {<QuestionContainer />}
-        <button className="exitGameButton" onClick={() => this.exitGame()}> Exit Game </button>
+        <button className="exitGameButton" onClick={() => this.exitGame()}>
+          {" "}
+          Exit Game{" "}
+        </button>
         {this.state.alert}
-    </div>
+      </div>
     );
   }
 }
 
-export default connect(null,{resetGameScore})(GameOne)
-
+export default connect(
+  null,
+  { resetGameScore }
+)(GameOne);
