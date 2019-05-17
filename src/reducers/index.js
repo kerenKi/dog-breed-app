@@ -5,6 +5,8 @@ import question from "./question";
 import getwinner from "./getwinner";
 import gamescore from "./gamescore";
 import questionresult from "./questionresult";
+import getDisplayScore from "./getDisplayScore"
+
 
 export default combineReducers({
   dogbreeds,
@@ -12,5 +14,6 @@ export default combineReducers({
   question,
   getwinner,
   gamescore,
-  questionresult
+  questionresult,
+  getDisplayScore
 });
