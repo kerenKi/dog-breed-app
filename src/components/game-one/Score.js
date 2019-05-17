@@ -41,10 +41,12 @@ class Score extends Component {
     render() {
         return (
             <div>
-            <div className="text-center">Score</div>
+            <div className="text-center">Score:
+            <span className="out-of-score" > {this.findOutSCore()} </span>
+            
+            </div>
             {/* progreebar shows the value in percentage */}
             <Progress className="progress" animated='true' color="info" value={ this.getScoreInPercentage()} > {this.getScoreInPercentage()}%</Progress>
-            <span className="out-of-score" > {this.findOutSCore()} </span>
             </div>
             )
         }

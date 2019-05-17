@@ -60,9 +60,9 @@ class QuestionContainer extends Component {
       {/* let the user know the anser: */}
       {this.props.questionresult !== null && <Message questionresult={this.props.questionresult} />}
       <Score />
-      <h2>Which breed am I?</h2>
+      
       <img src={winner && winner} alt="Guess me" />
-      <ul>
+      <ul className="answer-section">
       {shuffledQuestion &&
         shuffledQuestion.map((answer, index) => {
           // Map array, pass props, capture clicked answer

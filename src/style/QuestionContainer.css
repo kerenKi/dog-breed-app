@@ -4,22 +4,17 @@
 }
 
 .question img{
-    margin: auto;
-    max-width: 400px;
-    max-height: 400px;
+    margin: 35px 0 ;
+    width: 400px;
+    height: 300px;
     border-radius: 10px;
-}
-
-.answers_section{
-    width: 10em;
-    float: left;
-    list-style: none; 
-    text-decoration: none;
-    margin: auto;
-    width: 30%;
 }
 
 h2 {
     font-size: 40px;
 }
 
+ul {
+    position: relative;
+    bottom: 15px;
+}
