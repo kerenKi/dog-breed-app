@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 
 // Action: imports
 import { setDogBreeds } from "../../actions/SetDogbreeds";
-import { GetQuestion, SetQuestion, getWinningBreed } from "../../actions/GetQuestion";
+import { GetQuestion, SetQuestion } from "../../actions/GetQuestion";
 import { GetWinner } from "../../actions/GetWinner";
 import { setGameScore } from "../../actions/SetGameScore";
 import { getQuestionResult } from "../../actions/QuestionResult";
@@ -26,17 +26,13 @@ class QuestionContainer extends Component {
   clickedAnswer = answer => e => {
     e.preventDefault();
 
-     //return an object of the winnig breed
-     const winningBreedObject = getWinningBreed(this.props.question)
-    
      //set the QuestionResult back to null after 1.5 seconds
      setTimeout(()=>this.props.getQuestionResult(null),1500)
      
      //dispatch new question after 1.5 seconds
-     this.props.questionresult === null && setTimeout(()=>this.props.SetQuestion(null),1500)
+     this.props.questionresult === null && setTimeout(()=>this.props.SetQuestion(),1500)
      
-     
-     if (winningBreedObject.breed === answer[0]){
+     if (answer[1] === true){
        // add dispatch function here to update 'true' to store
        this.props.setGameScore(true);
        this.props.getQuestionResult(true);
@@ -72,7 +68,6 @@ class QuestionContainer extends Component {
             <Answer
               key={index}
               breed={answer.breed}
-              winner={answer.isWinner}
               onClick={this.clickedAnswer([answer.breed, answer.isWinner])}
             />
           );
