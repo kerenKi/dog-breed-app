@@ -7,9 +7,6 @@ import PropTypes from "prop-types";
 // Redux: connect
 import { connect } from "react-redux";
 
-//finction: import
-import { getWinningBreed } from '../../actions/GetQuestion'
-
 //style: import
 import '../../style/message.css'
 
@@ -23,7 +20,6 @@ class Message extends Component {
   };
   
   render() {
-    const winningBreedObject = this.props.question && getWinningBreed(this.props.question)
     
     return ( 
       //turnary: is answer is true shows firs <p>, else show second <p>

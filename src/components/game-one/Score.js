@@ -46,7 +46,7 @@ class Score extends Component {
             
             </div>
             {/* progreebar shows the value in percentage */}
-            <Progress className="progress" animated='true' color="info" value={ this.getScoreInPercentage()} > {this.getScoreInPercentage()}%</Progress>
+            <Progress className="progress" animated={true} color="info" value={ this.getScoreInPercentage()} > {this.getScoreInPercentage()}%</Progress>
             </div>
             )
         }

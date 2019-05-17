@@ -1,0 +1,12 @@
+.answer-images img{
+    margin: 35px 30px ;
+    width: 400px;
+    height: 300px;
+    border-radius: 10px;
+    display: inline-block;
+    float: left;
+}
+
+.answer-images {
+    margin: 100px auto;
+}
