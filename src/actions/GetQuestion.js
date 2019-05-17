@@ -4,8 +4,7 @@ import * as request from "superagent";
 // Function: imports
 import GenerateQuestion from "../functions/GenerateQuestion";
 import { setDogBreeds } from "../actions/SetDogbreeds";
-import { GetWinner } from "../actions/GetWinner";
-
+import { setRandomPic } from "./GetRandomPic";
 
 // Function: local
 export function getWinningBreed(array) {
@@ -32,23 +31,36 @@ export function SetQuestion() {
       .then(response => {
         // Get dogbreeds from API
         const breeds = Object.keys(response.body.message);
-        // Dispatch SET_DOGBREEDS using breeds
+        // Dispatch SET_DOGBREEDS
         dispatch(setDogBreeds(breeds));
-        // Get question using breeds
+        // Generate question from dogbreeds
         const question = GenerateQuestion(breeds);
-        // Dispatch GET_QUESTION using question
+        // Dispatch GET_QUESTION
         dispatch(GetQuestion(question));
-        // Get winning breed using question
-        const winningBreed = getWinningBreed(question);
-        // Fetch API using winning breed
-        return request.get(
-          "https://dog.ceo/api/breed/" + winningBreed.breed + "/images/random"
-        );
-      })
-      .then(response => {
-        // Dispatch GET_WINNER with result
-        dispatch(GetWinner(response.body.message));
-      })
-      .catch(console.error);
+        // Fetch 3 random pictures from API within array
+        const picPromises = question.map(answer => {
+          return request
+            .get("https://dog.ceo/api/breed/" + answer.breed + "/images/random")
+            .then(response => response.body.message);
+        });
+        // Return the array when all promises are solved
+        Promise.all(picPromises)
+          // Then make new array that combines question and url data
+          .then(urls => {
+            const questionwithRandomPics = urls.map((url, index) => {
+              return {
+                breed: question[index].breed,
+                isWinner: question[index].isWinner,
+                url: url
+              };
+            });
+            return questionwithRandomPics;
+          })
+          .then(response => {
+            // Dispatch setRandomPic
+            dispatch(setRandomPic(response));
+          })
+          .catch(console.error);
+      });
   };
 }
