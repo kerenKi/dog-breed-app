@@ -13,6 +13,8 @@ import { GetWinner } from "../../actions/GetWinner";
 import { setGameScore } from "../../actions/SetGameScore";
 import { getQuestionResult } from "../../actions/QuestionResult";
 
+//Component: import
+import Score from "./Score";
 
 // Style: import
 import "../../style/QuestionContainer.css";
@@ -57,7 +59,7 @@ class QuestionContainer extends Component {
       <div className="question">
       {/* let the user know the anser: */}
       {this.props.questionresult !== null && <Message questionresult={this.props.questionresult} />}
-
+      <Score />
       <h2>Which breed am I?</h2>
       <img src={winner && winner} alt="Guess me" />
       <ul>
