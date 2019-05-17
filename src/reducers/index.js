@@ -4,6 +4,7 @@ import dogimages from "./dogimages";
 import question from "./question";
 import getwinner from "./getwinner";
 import gamescore from "./gamescore";
+import randompic from "./randompic";
 import questionresult from "./questionresult";
 import getDisplayScore from "./getDisplayScore"
 
@@ -15,5 +16,7 @@ export default combineReducers({
   getwinner,
   gamescore,
   questionresult,
+randompic,
   getDisplayScore
+
 });
