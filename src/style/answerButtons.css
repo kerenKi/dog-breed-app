@@ -1,3 +1,7 @@
+.answers-section {
+    border: 1px solid black;
+}
+
 .answerButton{
     font-size: 30px;
     width: 250px;

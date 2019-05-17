@@ -13,6 +13,9 @@ import { setGameScore } from "../../actions/SetGameScore";
 import { getQuestionResult } from "../../actions/QuestionResult";
 import { getRandomPic } from "../../actions/GetRandomPic";
 
+//Component: import
+import Score from "./Score";
+
 // Style: import
 import "../../style/QuestionContainer.css";
 

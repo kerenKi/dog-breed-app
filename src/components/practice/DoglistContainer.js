@@ -24,7 +24,7 @@ class DoglistContainer extends Component {
 
     return (
       <div>
-        <Link className="playGameButton" to='/game-one'> I want to play the game!</Link>
+        <Link className="playGameButton" to='/'> I want to play the game!</Link>
        
         <h1 className="title" >Dog breed list</h1>
         <p>Click on the name of the breed to see what it looks like</p>

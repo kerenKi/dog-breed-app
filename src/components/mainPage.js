@@ -9,8 +9,9 @@ class MainPage extends Component {
     render() {
         return (
             <div>
-            <Link className="practice" to='/list'> Learn dog breeds</Link>
-            <Link className="play" to='/game-one'> Lets Play!</Link>
+                <p> <Link className="practice" to='/list'> Learn dog breeds</Link></p>
+                <p> <Link className="play" to='/game-one'> Lets Play game 1!</Link></p>
+                <p> <Link className="play" to='/game-two'> Lets Play game 2!</Link></p>
             </div>
             );
         }

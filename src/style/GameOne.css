@@ -1,8 +1,9 @@
 .exitGameButton {
     background-color: rgba(223, 77, 121, 0.849);
     box-shadow: 0 4px 15px 0 rgba(236, 116, 149, 0.75);
-    width: 200px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
+    float: right;
     text-align: center;
     margin: auto;
     color: aliceblue;
@@ -10,9 +11,12 @@
     cursor: pointer;
     font-size: 20px;
     padding-top: 5px;    
-    border-radius: 5px;
+    border-radius: 50%;
     -o-transition: all .4s ease-in-out;
     -webkit-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
+    position: relative;
+    right: 30px;
+    bottom: 15px;
    
 }

@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 
 // Component: import
-import QuestionContainer from "./QuestionContainer";
+import QuestionContainer from "./GameTwoQuestionContainer";
 
 // Redux: connect
 import { connect } from "react-redux";
