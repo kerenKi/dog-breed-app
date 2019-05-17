@@ -62,7 +62,7 @@ class GameOne extends Component {
     }
     return (
       <div>
-        <h1>Game 1 - Which breed am I?</h1>
+        
         <button className="exitGameButton" onClick={() => this.exitGame()}>
           {" "}
           Exit {" "}

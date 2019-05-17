@@ -12,18 +12,23 @@ import "../../style/answerButtons.css";
 export default class Answer extends Component {
   // PropTypes: check type of props
   static propTypes = {
-    breed: PropTypes.string.isRequired
+    breed: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired
   };
 
   render() {
-    // Capitalize answer
-    const breedCapitalized =
-      this.props.breed.charAt(0).toUpperCase() + this.props.breed.slice(1);
+
     // Render answer
     return (
-      <button className="answerButton" onClick={this.props.onClick}>
-        {breedCapitalized}
-      </button>
+      <div>
+        <img onClick={this.props.onClick}
+          src={this.props.url && this.props.url}
+          alt="Guess me, no cheating!"
+        />
+
+       {/*  <button className="answerButton" onClick={this.props.onClick}>
+        </button> */}
+      </div>
     );
   }
 }
