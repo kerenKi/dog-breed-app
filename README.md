@@ -1,6 +1,4 @@
-# Group Project
-
-https://codaisseur-dog-breed-app.netlify.com/
+# Group Project: https://codaisseur-dog-breed-app.netlify.com/
 
 #### 🐕🐩 Build a dog breed memorization game. 🐕🐩
 
