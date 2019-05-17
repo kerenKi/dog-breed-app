@@ -31,7 +31,7 @@ class Message extends Component {
         <span>
           {this.props.questionresult ?
             <p className="correctAnswer">your answer is correct</p> : 
-            <p className="wrongAnswer">Wrong! <br/> Right answer was <strong> {winningBreedObject.breed}</strong> </p> 
+            <p className="wrongAnswer">Wrong guess!  </p> 
           }
         </span> 
       </div>
