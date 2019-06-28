@@ -1,4 +1,4 @@
-# Group Project: https://codaisseur-dog-breed-app.netlify.com/
+# Group Project: https://who-let-the-dogs-out.netlify.com/game-one
 
 #### 🐕🐩 Build a dog breed memorization game. 🐕🐩
 
